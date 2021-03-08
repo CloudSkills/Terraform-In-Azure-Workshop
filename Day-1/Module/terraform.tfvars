@@ -1,0 +1,2 @@
+name = "iqmetrixrg"
+location = "eastus"
