@@ -19,6 +19,6 @@
 ```
 
 3. Run `terraform init` and you'll see a message similar to the screenshot below.
-![]('images/1.png')
+[]('images/1.png')
 
 4. Type `yes` to copy the existing state to the new backend
