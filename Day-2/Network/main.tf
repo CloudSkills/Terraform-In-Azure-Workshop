@@ -39,9 +39,27 @@ resource "azurerm_virtual_network" "iqmetrix-vnet" {
     name           = "subnet1"
     address_prefix = "10.0.1.0/24"
   }
+}
 
-  subnet {
-    name           = "subnet2"
-    address_prefix = "10.0.2.0/24"
+resource "azurerm_subnet" "iqmetrix-internal" {
+  name                 = "internal"
+  resource_group_name  = var.rg_name
+  virtual_network_name = azurerm_virtual_network.iqmetrix-vnet.name
+  address_prefixes     = ["10.0.2.0/24"]
+}
+
+resource "azurerm_network_interface" "iqmetrix-nic" {
+  name                = "iqmetrix-nic"
+  location            = var.location
+  resource_group_name = var.rg_name
+
+  ip_configuration {
+    name                          = "iqmetrixconfig"
+    subnet_id                     = azurerm_subnet.iqmetrix-internal.id
+    private_ip_address_allocation = "Dynamic"
   }
+}
+
+output "networkid" {
+  value = azurerm_network_interface.iqmetrix-nic.id
 }
