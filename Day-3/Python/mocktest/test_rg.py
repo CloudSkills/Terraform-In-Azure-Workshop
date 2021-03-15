@@ -1,3 +1,6 @@
+# Run
+# python test_rg.py '../../../Day-2/ResourceGroup/'
+
 import os
 import time
 import sys
