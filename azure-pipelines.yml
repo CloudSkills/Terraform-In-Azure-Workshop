@@ -9,7 +9,7 @@ steps:
   inputs:
     provider: 'azurerm'
     command: 'init'
-    workingDirectory: 'Day-1/Module/Module-StorageAccount'
+    workingDirectory: 'Day-2/ResourceGroup'
     backendServiceArm: 'Mike-Pay-As-You-Go (220284d2-6a19-4781-87f8-5c564ec4fec9)'
     backendAzureRmResourceGroupName: 'cloudskills-rg'
     backendAzureRmStorageAccountName: 'cloudskills92sg'
