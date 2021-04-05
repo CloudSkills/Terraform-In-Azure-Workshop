@@ -54,28 +54,3 @@ steps:
     command: 'apply'
     workingDirectory: 'Day-2/Network'
     environmentServiceNameAzureRM: 'Mike-Pay-As-You-Go (220284d2-6a19-4781-87f8-5c564ec4fec9)'
-
-- task: TerraformTaskV1@0
-  inputs:
-    provider: 'azurerm'
-    command: 'init'
-    workingDirectory: 'Day-2/VMs'
-    backendServiceArm: 'Mike-Pay-As-You-Go (220284d2-6a19-4781-87f8-5c564ec4fec9)'
-    backendAzureRmResourceGroupName: 'cloudskills-rg'
-    backendAzureRmStorageAccountName: 'cloudskills92sg'
-    backendAzureRmContainerName: 'tfstate'
-    backendAzureRmKey: 'terraform.tfstate'
-
-- task: TerraformTaskV1@0
-  inputs:
-    provider: 'azurerm'
-    command: 'plan'
-    workingDirectory: 'Day-2/VMs'
-    environmentServiceNameAzureRM: 'Mike-Pay-As-You-Go (220284d2-6a19-4781-87f8-5c564ec4fec9)'
-
-- task: TerraformTaskV1@0
-  inputs:
-    provider: 'azurerm'
-    command: 'apply'
-    workingDirectory: 'Day-2/VMs'
-    environmentServiceNameAzureRM: 'Mike-Pay-As-You-Go (220284d2-6a19-4781-87f8-5c564ec4fec9)'
