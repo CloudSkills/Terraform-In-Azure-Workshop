@@ -1,2 +1,2 @@
-rg_name = "iqmetrix92"
+rg_name = "iqmetrixrg"
 location = "eastus"
