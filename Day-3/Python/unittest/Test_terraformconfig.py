@@ -1,6 +1,3 @@
-# Run
-# python -m unittest
-
 import unittest
 import os
 
@@ -38,5 +35,15 @@ class TestTerraformConfig(unittest.TestCase):
         os.system(f'cd {path} && terraform destroy -auto-approve')
 
 
+def suite():
+    suite = unittest.TestSuite()
+    suite.addTest(TestTerraformConfig('test_terraform_init'))
+    suite.addTest(TestTerraformConfig('test_terraform_plan'))
+    suite.addTest(TestTerraformConfig('test_terraform_apply'))
+    suite.addTest(TestTerraformConfig('test_terraform_destroy'))
+    return suite
+
+
 if __name__ == '__main__':
-    unittest.main()
+    runtest = unittest.TextTestRunner(failfast=True)
+    runtest.run(suite())
