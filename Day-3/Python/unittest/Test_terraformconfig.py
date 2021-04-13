@@ -7,7 +7,11 @@ import os
 # Global
 path = '../../../Day-2/ResourceGroup'
 
+
 class TestTerraformConfig(unittest.TestCase):
+
+    def test_terraform_init(self):
+        os.system(f'cd {path} && terraform init')
 
     def test_terraform_plan(self):
         name = 'iqmetrixrg'
