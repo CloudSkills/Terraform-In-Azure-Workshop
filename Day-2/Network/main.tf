@@ -1,9 +1,16 @@
 terraform {
-    required_providers {
-        azurerm = {
-            source = "hashicorp/azurerm"
-        }
+  backend "azurerm" {
+    resource_group_name  = "cloudskills-rg"
+    storage_account_name = "cloudskills92sg"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+ }
+
+  required_providers {
+    azurerm = {
+        source = "hashicorp/azurerm"
     }
+  }
 }
 
 provider "azurerm" {
@@ -19,8 +26,8 @@ resource "azurerm_network_security_group" "iqmetrix-sg" {
 
 resource "azurerm_network_ddos_protection_plan" "iqmetrix-ddos" {
   name                = "iqmetrix-ddos"
-  location            = var.location
-  resource_group_name = var.rg_name
+  location            = azurerm_network_security_group.iqmetrix-sg.location
+  resource_group_name = azurerm_network_security_group.iqmetrix-sg.resource_group_name
 }
 
 resource "azurerm_virtual_network" "iqmetrix-vnet" {

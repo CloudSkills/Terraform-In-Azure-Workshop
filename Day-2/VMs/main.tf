@@ -1,11 +1,18 @@
 # terraform plan -var-file="secrets.tfvars"
 # terraform apply -var-file="secrets.tfvars"
 terraform {
-    required_providers {
-        azurerm = {
-            source = "hashicorp/azurerm"
-        }
+  backend "azurerm" {
+    resource_group_name  = "cloudskills-rg"
+    storage_account_name = "cloudskills92sg"
+    container_name       = "tfstate"
+    key                  = "terraform.tfstate"
+ }
+
+  required_providers {
+    azurerm = {
+        source = "hashicorp/azurerm"
     }
+  }
 }
 
 provider "azurerm" {
@@ -41,6 +48,6 @@ resource "azurerm_virtual_machine" "main" {
     disable_password_authentication = false
   }
   tags = {
-    environment = "production"
+    environment = "staging"
   }
 }

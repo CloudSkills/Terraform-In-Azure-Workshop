@@ -5,9 +5,6 @@ import unittest
 import os
 import sys
 
-# Global var
-path = 'C:/Users/mleva/gitrepos/Terraform-In-Azure-Workshop/Day-2/ResourceGroup'
-
 class TestTerraformConfig(unittest.TestCase):
 
     def test_terraform_plan(self):
@@ -33,6 +30,9 @@ class TestTerraformConfig(unittest.TestCase):
         self.assertEqual(name, 'iqmetrixrg')
         self.assertEqual(location, 'eastus')
         os.system(f'cd {path} && terraform destroy -auto-approve')
+
+
+path = sys.argv[1]
 
 
 if __name__ == '__main__':
