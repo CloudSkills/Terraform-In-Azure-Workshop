@@ -24,6 +24,5 @@ steps:
 #   displayName: 'Install dependencies'
 
 - script: |
-    cd 'Day-3/Python/unittest'
-    python Test_terraformconfig.py
+    python Test_terraformconfig.py 'Day-3/Python/unittest'
   displayName: 'unittest'
